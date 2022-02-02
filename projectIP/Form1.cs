@@ -18,6 +18,10 @@ namespace projectIP
         public Form1()
         {
             InitializeComponent();
+            label5.Text = "";
+            label6.Text = "";
+            label7.Text = "";
+            label8.Text = "";
         }      
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,12 +33,20 @@ namespace projectIP
                 using (WebClient wc = new WebClient())
                     line = wc.DownloadString($"https://ipwhois.app/xml/{textBox1.Text}");
 
-                Match match = Regex.Match(line, "<country>(.*?)</country>(.*?)<latitude>(.*?)</latitude>(.*?)<longitude>(.*?)</longitude>");
+                Match match = Regex.Match(line, "<country>(.*?)</country>(.*?)" +
+                    "<region>(.*?)</region>(.*?)" +
+                    "<city>(.*?)</city>(.*?)" +
+                    "<latitude>(.*?)</latitude>(.*?)" +
+                    "<longitude>(.*?)</longitude>(.*?)" +
+                    "<isp>(.*?)</isp>");
 
-                label1.Text = "Страна: " + match.Groups[1].Value;
+                label5.Text =  match.Groups[1].Value;
+                label6.Text = match.Groups[3].Value;
+                label7.Text = match.Groups[5].Value;
+                label8.Text = match.Groups[11].Value;
 
-                string latitude = match.Groups[3].Value;
-                string longitude = match.Groups[5].Value;
+                string latitude = match.Groups[7].Value;
+                string longitude = match.Groups[9].Value;
 
                 webBrowser1.Navigate($"https://www.google.com/maps/dir/{latitude},{longitude}/@{latitude},{longitude}");
             }
@@ -90,5 +102,6 @@ namespace projectIP
         {
             if (e.KeyChar == (char)Keys.Enter) button1.PerformClick();
         }
+
     }
 }
