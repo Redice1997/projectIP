@@ -96,12 +96,11 @@ namespace projectIP
             }
 
             return false;
-        }
+        } 
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter) button1.PerformClick();
+            if (e.KeyValue == (char)Keys.Enter) button1.PerformClick();
         }
-
     }
 }

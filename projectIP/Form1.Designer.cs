@@ -69,7 +69,6 @@ namespace projectIP
             this.textBox1.Text = "Введите IP";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // panel1
             // 
@@ -177,20 +176,22 @@ namespace projectIP
             this.webBrowser1.Location = new System.Drawing.Point(287, 10);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(656, 536);
+            this.webBrowser1.Size = new System.Drawing.Size(862, 536);
             this.webBrowser1.TabIndex = 5;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(955, 556);
+            this.ClientSize = new System.Drawing.Size(1161, 556);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(300, 338);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Вычислитель по IP";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
